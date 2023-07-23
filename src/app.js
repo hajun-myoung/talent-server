@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 const rootRouter = Router();
 rootRouter.get("/", async function (req, res, next) {
   try {
-    res.status(200).send("Hello, Hyoro Jasik");
+    res.status(200).send("Hello, Justice Church");
   } catch (err) {
     console_logger("Root Router", err.message, true);
     next(err);
