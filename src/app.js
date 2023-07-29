@@ -3,6 +3,7 @@ import express, { Router } from "express";
 import console_logger from "../middlewares/console_logger.js";
 
 import { userRouter } from "../routers/userRouter.js";
+import { logRouter } from "../routers/logRouter.js";
 
 const app = express();
 
@@ -37,5 +38,6 @@ rootRouter.get("/help/:place", async function (req, res, next) {
 
 app.use(rootRouter);
 app.use(userRouter);
+app.use(logRouter);
 
 export { app };
