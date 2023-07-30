@@ -33,14 +33,13 @@ userRouter.post("/user/find", async (req, res, next) => {
       res.status(503).send({ result: "failed to get talent account" });
     }
 
-    if (!USER_TEAM) {
-      console_logger("Router Error", "no user team", true);
-      res.status(503).send({ result: "failed to get user's team" });
-    }
-
     res
       .status(201)
-      .send({ username: USER_NAME, talent: USER_ACCOUNT, team: USER_TEAM });
+      .send({
+        username: USER_NAME,
+        talent: USER_ACCOUNT,
+        team: USER_TEAM && -1,
+      });
   } catch (err) {
     console_logger("R.Error Catcher", err.message, true);
   }
