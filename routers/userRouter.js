@@ -87,4 +87,13 @@ userRouter.post("/user/readteam", async (req, res, next) => {
   }
 });
 
+userRouter.get("/user/maxfive", async (req, res, next) => {
+  try {
+    const maxData = await userHandle.getMax();
+    res.status(201).send({ data: maxData });
+  } catch (err) {
+    console_logger("R.Error Catcher", err.message, true);
+  }
+});
+
 export { userRouter };

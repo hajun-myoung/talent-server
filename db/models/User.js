@@ -33,6 +33,10 @@ class User {
     const USERS = await UserModel.find({ team });
     return USERS;
   }
+  static async getMaxMembers() {
+    const fiveBiguser = UserModel.find().sort({ talent: -1 }).limit(5);
+    return fiveBiguser;
+  }
 }
 
 export { User };

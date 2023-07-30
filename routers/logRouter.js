@@ -35,4 +35,18 @@ logRouter.post("/log/find", async (req, res, next) => {
   }
 });
 
+logRouter.get("/log/maxfive", async (req, res, next) => {
+  try {
+    const maxThreshold = 5;
+    const mergedData = await logWriter.getMax();
+
+    const sortedData = Object.entries(mergedData).sort((a, b) => b[1] - a[1]);
+    const cuttedData = sortedData.filter((v, i) => i < maxThreshold);
+
+    res.status(201).send({ data: cuttedData });
+  } catch (err) {
+    console_logger("R.Error Catcher", err.message, true);
+  }
+});
+
 export { logRouter };

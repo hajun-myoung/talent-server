@@ -122,6 +122,13 @@ class userHandle {
     console.log(USERS);
     return USERS;
   }
+
+  static async getMax() {
+    const data = await User.getMaxMembers();
+
+    console.log(data);
+    return data;
+  }
 }
 
 export { userHandle };

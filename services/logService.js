@@ -31,6 +31,20 @@ class logWriter {
     console.log(LOGS);
     return LOGS;
   }
+
+  static async getMax() {
+    const data = await Log.findAll();
+    const mergedData = {};
+    data?.map((log) => {
+      if (Object.keys(mergedData).includes(log?.payby)) {
+        data[log.payby] += log.amount;
+      } else {
+        mergedData[log?.payby] = log.amount;
+      }
+    });
+
+    return mergedData;
+  }
 }
 
 export { logWriter };

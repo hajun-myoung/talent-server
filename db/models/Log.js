@@ -15,6 +15,10 @@ class Log {
     // console.log(startTime, endTime);
     return LOGS;
   }
+  static async findAll() {
+    const LOGS = await LogModel.find({});
+    return LOGS;
+  }
 }
 
 export { Log };
